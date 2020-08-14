@@ -9,14 +9,6 @@ import (
 )
 
 
-func Index(c *gin.Context){
-	books:=data.GetBooks()
-	c.HTML(200,"books.html",books)
-}
-
-func AddForm(c *gin.Context){
-	c.HTML(200,"AddForm.html",nil)
-}
 
 func ProcessAddForm(c *gin.Context){
 	title:=c.PostForm("title")
@@ -38,10 +30,7 @@ func ProcessAddForm(c *gin.Context){
 	}
 
 }
-func DeleteForm(c *gin.Context){
-	books:=data.GetBooks()
-	c.HTML(200,"DeleteBook.html",books)
-}
+
 func ProcessDeleteForm(c *gin.Context){
 	
 	idstr:=c.PostForm("ID")
@@ -62,9 +51,6 @@ func ProcessDeleteForm(c *gin.Context){
 	}
 }
 
-func UpdateForm(c *gin.Context){
-	c.HTML(200,"UpdateBook.html",data.GetBooks())
-}
 
 func ProcessUpdateForm(c *gin.Context){
 	id,err:=strconv.ParseInt(c.PostForm("ID"),10,64)
