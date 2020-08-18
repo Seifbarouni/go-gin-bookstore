@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"net/http"
 	"projects/GinFramework/gin-bookstore/data"
 
 	"github.com/gin-gonic/gin"
@@ -9,6 +10,9 @@ import (
 func Index(c *gin.Context) {
 	books := data.GetBooks()
 	c.HTML(200, "books.html", books)
+}
+func Redirect(c *gin.Context){
+	c.Redirect(http.StatusFound,"/books/show")
 }
 
 func AddForm(c *gin.Context) {

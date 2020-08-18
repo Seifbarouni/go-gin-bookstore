@@ -8,7 +8,10 @@ import (
 
 func main() {
 	r:=gin.Default()
+	r.Static("/views","./views")
 	r.LoadHTMLGlob("assets/*")
+
+	r.GET("/",handlers.Redirect)
 	r.GET("/books/show",handlers.Index)
 
 	r.GET("/books/add",handlers.AddForm)
